@@ -48,7 +48,8 @@ describe('Test Order', () => {
     setupMock();
     //Call the page
     render(
-      <OrderContext.Provider value={{ orderName, orderItems }}>
+      <OrderContext.Provider
+        value={{ orderName, orderItems }}>
         <Order />
       </OrderContext.Provider>
     );
@@ -63,7 +64,8 @@ describe('Test Order', () => {
     );
     //Assert: replace the return true.
     await waitFor(() => {
-      return true;
+      expect(screen.getAllByText('$5.00'))
+        .toHaveLength(1);
     });
   });
 });
